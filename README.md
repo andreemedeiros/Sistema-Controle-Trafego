@@ -57,7 +57,7 @@ Os semáforos operam em ciclos fixos e independentes, gerenciando o fluxo de ve�
 
 Contribua com o projeto [Supervised-Control-Project](https://github.com/andreemedeiros/Sistema-Controle-Trafego/graphs/contributors)
 
-Video explicativo no [Youtube]()
+Video explicativo no [Youtube](https://www.youtube.com/watch?v=sKgzRScjHkg)
 
 ## Licença
 
