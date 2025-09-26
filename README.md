@@ -12,44 +12,34 @@ Modelagem de um Sistema de Controle de Tráfego com Prioridade para Transporte P
 
 ## Descrição
 
-Este projeto visa proporcionar uma experiência prática na modelagem e análise de sistemas a eventos discretos (SED) utilizando Redes de Petri Coloridas Hierárquicas (HCPN). As HCPN são uma extensão das Redes de Petri tradicionais que incorporam cores (dados associados aos tokens) e hierarquia (módulos reutilizáveis), permitindo modelar sistemas complexos de forma modular e eficiente. A ferramenta a ser utilizada é o CPN Tools, que suporta a criação, simulação e análise de modelos HCPN.
+Este projeto tem como finalidade a aplicação prática de Redes de Petri Coloridas Hierárquicas (HCPN) para a modelagem e o estudo de Sistemas a Eventos Discretos (SED). A abordagem HCPN incorpora o conceito de "cores" - dados anexados aos tokens - e uma estrutura hierárquica de módulos, o que permite representar sistemas complexos de maneira organizada e eficiente. Para desenvolver e analisar os modelos, será utilizado o software CPN Tools.
 
-O tema escolhido é a modelagem de um sistema de controle de tráfego em uma interseção urbana com prioridade para veículos de transporte público (como ônibus ou metrôs de superfície). Esse tipo de sistema é um exemplo clássico de SED, em que eventos discretos (como mudanças de semáforo, chegada de veículos ou detecção de ônibus) alteram o estado do sistema. A hierarquia permite decompor o modelo em subsistemas, facilitando a análise de propriedades como ausência de deadlocks, vivacidade e desempenho.
+O trabalho concentrar-se-á no cenário de um sistema de controle de tráfego em um cruzamento, com foco na priorização de veículos de transporte público, como ônibus. Sistemas de tráfego são exemplos clássicos de SED, nos quais eventos isolados - a chegada de um ônibus, a mudança de um semáforo - provocam mudanças de estado. A estrutura hierárquica das HCPN será explorada para dividir o sistema em componentes menores, simplificando a análise de aspectos como fluxo contínuo, ausência de bloqueios e eficiência.
 
-Considere uma interseção em cruzamento com quatro direções (Norte-Sul e Leste-Oeste), incluindo:
+O modelo representará um cruzamento de quatro vias (Norte-Sul e Leste-Oeste) com as seguintes características:
 
-- Semáforos para veículos comuns e pedestres.
+- Semáforos para veículos comuns e para a travessia de pedestres.
 
-- Uma faixa dedicada para transporte público (ex.: ônibus) com sensor de detecção que ativa prioridade (prolonga o verde ou interrompe o ciclo normal).
+- Simulação de filas de veículos em cada direção.
 
-- Filas de veículos em cada direção, com chegada aleatória modelada por distribuições probabilísticas (ex.: Poisson para chegadas).
-
-- Tempos de ciclo: verde padrão de 30 segundos, amarelo de 5 segundos, vermelho ajustável; prioridade estende o verde em 15 segundos para ônibus.
+- Definição de ciclos semafóricos: verde por 30 segundos, amarelo por 5 segundos, e tempo de vermelho variável.
 
 ## Estrutura
 
-- Nível superior (página principal): visão geral da interseção, com substituições para módulos como "Controle de Semáforos", "Gerenciamento de Filas" e "Detecção de Prioridade".
+- Nível superior (página principal): visão geral da interseção, com substituições para módulos como "Controle de Semáforos", "Gerenciamento de Filas".
 
 - Módulos subordinados:
-  - Controle de semáforos: modela as fases (verde, amarelo, vermelho) usando lugares coloridos para estados e transições temporizadas.
+  - Controle de semáforos: Modela as fases (verde, amarelo, vermelho) usando lugares coloridos para estados e transições temporizadas.
 
-  - Gerenciamento de filas: lugares para filas de veículos (tokens coloridos representam tipos: carro comum, ônibus, pedestre), com transições para chegada e partida.
+  - Gerenciamento de filas: Lugares para filas de veículos (tokens coloridos representam tipos: carro comum, ônibus, pedestre), com transições para chegada e partida.
 
-  - Detecção de prioridade: módulo que verifica a presença de ônibus (via token colorido) e ajusta o ciclo de semáforos.
+  - Cores (Color Sets): Conjuntos como ID do veículo e tipo: "carro", "onibus", "pedestre".
 
-  - Cores (Color Sets): defina conjuntos como `Veiculo = product Int * String` (ID do veículo e tipo: "carro", "onibus", "pedestre"); `EstadoSemaforo = enum with Verde | Amarelo | Vermelho`.
-
-  - Temporização: use transições timed para simular delays reais (ex.: `@+30` para 30 unidades de tempo no verde).
+  - Temporização: Transições timed para simular delays reais (ex.: `@+30` para 30 unidades de tempo no verde).
 
 ## Cenários
 
   - Tráfego normal sem prioridade.
-
-  - Tráfego com chegada de ônibus, ativando prioridade.
-
-  - Sobrecarga: Alta taxa de chegada de veículos, analisando congestionamento.
-
-  - Falhas: Simule falha em sensor de detecção e verifique impactos.
 
 ## Requisitos
 
@@ -57,9 +47,9 @@ Considere uma interseção em cruzamento com quatro direções (Norte-Sul e Lest
 
 ## Execução
 
-Execute o arquivo "Projeto2SED" dentro da pasta source:
+Com o CPN Tools instalado, execute o arquivo "ControleTrafego_v1.cpn" dentro da pasta source:
 ```
-Projeto2SED.cpn
+ControleTrafego_v1.cpn
 ```
 
 ## Autores
