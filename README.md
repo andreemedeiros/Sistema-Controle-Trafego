@@ -1,5 +1,5 @@
 # Sistema-Controle-Trafego-HCPN
-Modelagem de um Sistema de Controle de Tráfego com Prioridade para Transporte Público Usando Redes de Petri Coloridas Hierárquicas (HCPN)
+Modelagem de um Sistema de Controle de Tráfego Urbano Usando Redes de Petri Coloridas Hierárquicas (HCPN)
 
 ## Index
 - [Descrição](#Descrição)
@@ -49,7 +49,7 @@ O modelo representará um cruzamento de quatro vias (Norte-Sul e Leste-Oeste) co
 
 Com o CPN Tools instalado, execute o arquivo "ControleTrafego_v1.cpn" dentro da pasta source:
 ```
-ControleTrafego_v1.cpn
+ControleTrafego_v3.cpn
 ```
 
 ## Autores
