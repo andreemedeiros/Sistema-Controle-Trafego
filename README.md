@@ -59,10 +59,10 @@ A subpágina **`Filas`** é responsável por simular a chegada de entidades ao c
 * **Armazenamento em Filas:** Adiciona as entidades geradas ao final da fila correspondente.
 
 **Visão Detalhada da Geração nas Filas:**
-[COLOQUE A IMAGEM "WhatsApp Image 2025-09-29 at 11.12.27.jpeg" AQUI]
+![filas](image/filas.jpeg)
 
 **Visão Geral do Gerenciamento das Filas:**
-[COLOQUE A IMAGEM "WhatsApp Image 2025-09-29 at 11.12.26 (1).jpeg" AQUI]
+![fluxo_filas](image/fluxo_filas.jpeg)
 
 ---
 
@@ -70,7 +70,11 @@ A subpágina **`Filas`** é responsável por simular a chegada de entidades ao c
 
 Esta subpágina contém toda a lógica para o controle e a alternância dos sinais de trânsito. Ela garante que os semáforos para veículos e pedestres operem de forma sincronizada, passando pelos estados `Verde` -> `Amarelo` -> `Vermelho` e evitando condições de conflito (ex: dois sinais verdes para fluxos concorrentes).
 
-[COLOQUE A IMAGEM "WhatsApp Image 2025-09-29 at 11.12.26 (2).jpeg" AQUI]
+**Visão Detalhada Semaforos:**
+![semaforo](image/semaforo.jpeg)
+
+**Visão Geral dos Semaforos:**
+![fluxo_semaforo](image/fluxo_semaforo.jpeg)
 
 ---
 
@@ -81,8 +85,6 @@ A página **`Cruzamento`** é o núcleo do modelo, onde a lógica das subpágina
 * **Recebimento de Dados:** A página lê os tokens das filas e o estado atual de cada semáforo.
 * **Lógica de Decisão:** Utilizando condições de guarda nas transições, o modelo verifica se o semáforo está verde para uma determinada fila que não esteja vazia.
 * **Consumo de Entidades:** Se as condições forem atendidas, a transição é habilitada e "consome" a primeira entidade da fila correspondente, efetivamente simulando sua passagem pelo cruzamento.
-
-[COLOQUE A IMAGEM "WhatsApp Image 2025-09-29 at 11.12.27 (1).jpeg" AQUI]
 
 ## Cenários
 
