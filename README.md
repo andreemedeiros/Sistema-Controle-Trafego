@@ -4,6 +4,10 @@ Modelagem de um Sistema de Controle de Tráfego Urbano Usando Redes de Petri Col
 ## Index
 - [Descrição](#Descrição)
 - [Estrutura](#Estrutura)
+- [Declarações Globais (Declarations)](#Declarações-Globais-(Declarations))
+- [Subpágina: `Filas`](#Subpágina:-`Filas`)
+- [Subpágina: `Semaforos`](#Subpágina:-`Semaforos`)
+- [Página Principal: `Cruzamento`](#Página-Principal:-`Cruzamento`)
 - [Cenários](#Cenários)
 - [Requisitos](#Requisitos)
 - [Execução](#Execução)
@@ -23,19 +27,62 @@ O modelo representa um cruzamento de quatro vias (Via 1, Via 2, Via 3 e Via 4) c
 - Definição de ciclos semafóricos: verde por 30 segundos, amarelo por 5 segundos e vermelho por 60 segundos.
 - Distinção entre tipos de veículos, como Carro e Ônibus.
 
+O projeto apresenta a modelagem e simulação de um cruzamento de tráfego utilizando a ferramenta de Redes de Petri Coloridas (CPN). O objetivo é gerenciar o fluxo de veículos e pedestres de forma segura e eficiente, através da coordenação de semáforos e filas de espera.
+
 ## Estrutura
 
 O modelo é organizado de forma hierárquica para simplificar a complexidade do sistema.
 
 - **Nível superior (página "Pagina Principal"):** Oferece uma visão geral do cruzamento. Este nível contém o local central "Cruzamento" e quatro transições de substituição (`Via 1`, `Via 2`, `Via 3`, `Via 4`), onde cada uma representa um semáforo e sua via correspondente.
-
 - **Módulos subordinados (páginas "Semaforo1", "Semaforo2", "Semaforo3", "Semaforo4"):** Cada página modela o comportamento de um semáforo e o fluxo de veículos de sua respectiva via.
-    - **Controle de semáforos:** Modela as três fases do semáforo (Verde, Amarelo, Vermelho) usando lugares específicos para cada estado. As transições entre os estados são temporizadas para simular a duração de cada fase.
-    - **Gerenciamento de filas:** Um lugar (ex: "Fila de veiculos 1") armazena os veículos que aguardam para cruzar. Os tokens neste lugar são coloridos para representar diferentes tipos de veículos.
-    - **Cores (Color Sets):** O projeto utiliza dois conjuntos de cores principais:
-        - `EstadoSemaforo`: Define os possíveis estados de um semáforo (`Verde`, `Amarelo`, `Vermelho`).
-        - `Veiculo`: Define os tipos de veículos no sistema (`Carro`, `Onibus`).
-    - **Temporização:** As transições são temporizadas para simular a duração real dos eventos. Por exemplo, a transição de Verde para Amarelo ocorre após 30 unidades de tempo (`@+30`), de Amarelo para Vermelho após 5 (`@+5`), e de Vermelho para Verde após 60 (`@+60`).
+    - **Controle de semáforos:** Modela as três fases do semáforo (Verde, Amarelo, Vermelho) usando lugares específicos para cada estado. As transições entre os estados são temporizadas para simular a duração de cada fase.
+    - **Gerenciamento de filas:** Um lugar (ex: "Fila de veiculos 1") armazena os veículos que aguardam para cruzar. Os tokens neste lugar são coloridos para representar diferentes tipos de veículos.
+    - **Temporização:** As transições são temporizadas para simular a duração real dos eventos. Por exemplo, a transição de Verde para Amarelo ocorre após 30 unidades de tempo (`@+30`), de Amarelo para Vermelho após 5 (`@+5`), e de Vermelho para Verde após 60 (`@+60`).
+
+O modelo é estruturado hierarquicamente, composto por uma página principal, **`Cruzamento`**, e duas subpáginas de apoio: **`Semaforos`** e **`Filas`**.
+
+## Declarações Globais (Declarations)
+
+Antes de detalhar as páginas, é importante definir os tipos de dados (colorsets) que o modelo utiliza. Foram definidos estados para os semáforos (`Verde`, `Amarelo`, `Vermelho`), tipos de veículos (`Carro`, `Onibus`, `Pedestre`), e estruturas para as filas. O projeto utiliza dois conjuntos de cores principais:
+        - `EstadoSemaforo`: Define os possíveis estados de um semáforo (`Verde`, `Amarelo`, `Vermelho`).
+        - `Veiculo`: Define os tipos de veículos no sistema (`Carro`, `Onibus`, `Pedestre`).
+
+[COLOQUE A IMAGEM "WhatsApp Image 2025-09-29 at 11.12.26.jpeg" AQUI]
+
+---
+
+## Subpágina: `Filas`
+
+A subpágina **`Filas`** é responsável por simular a chegada de entidades ao cruzamento. Transições temporizadas geram tokens (representando carros, ônibus e pedestres) e os inserem em lugares que funcionam como filas para cada direção: Norte-Sul (NS) e Leste-Oeste (LO).
+
+* **Geração de Entidades:** Cria carros, ônibus e pedestres em intervalos de tempo definidos.
+* **Armazenamento em Filas:** Adiciona as entidades geradas ao final da fila correspondente.
+
+**Visão Detalhada da Geração nas Filas:**
+[COLOQUE A IMAGEM "WhatsApp Image 2025-09-29 at 11.12.27.jpeg" AQUI]
+
+**Visão Geral do Gerenciamento das Filas:**
+[COLOQUE A IMAGEM "WhatsApp Image 2025-09-29 at 11.12.26 (1).jpeg" AQUI]
+
+---
+
+## Subpágina: `Semaforos`
+
+Esta subpágina contém toda a lógica para o controle e a alternância dos sinais de trânsito. Ela garante que os semáforos para veículos e pedestres operem de forma sincronizada, passando pelos estados `Verde` -> `Amarelo` -> `Vermelho` e evitando condições de conflito (ex: dois sinais verdes para fluxos concorrentes).
+
+[COLOQUE A IMAGEM "WhatsApp Image 2025-09-29 at 11.12.26 (2).jpeg" AQUI]
+
+---
+
+## Página Principal: `Cruzamento`
+
+A página **`Cruzamento`** é o núcleo do modelo, onde a lógica das subpáginas `Filas` e `Semaforos` é integrada. Sua principal função é decidir qual entidade pode atravessar o cruzamento a cada momento.
+
+* **Recebimento de Dados:** A página lê os tokens das filas e o estado atual de cada semáforo.
+* **Lógica de Decisão:** Utilizando condições de guarda nas transições, o modelo verifica se o semáforo está verde para uma determinada fila que não esteja vazia.
+* **Consumo de Entidades:** Se as condições forem atendidas, a transição é habilitada e "consome" a primeira entidade da fila correspondente, efetivamente simulando sua passagem pelo cruzamento.
+
+[COLOQUE A IMAGEM "WhatsApp Image 2025-09-29 at 11.12.27 (1).jpeg" AQUI]
 
 ## Cenários
 
@@ -49,7 +96,7 @@ Os semáforos operam em ciclos fixos e independentes, gerenciando o fluxo de ve�
 
 - [Ferramenta: CPN Tools](https://cpntools.org/)
 
-  ## Autores
+## Autores
 
 - [André Medeiros](https://github.com/andreemedeiros)
 - [João Marcelo](https://github.com/marcello-rbr)
