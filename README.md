@@ -47,7 +47,7 @@ Antes de detalhar as páginas, é importante definir os tipos de dados (colorset
         - `EstadoSemaforo`: Define os possíveis estados de um semáforo (`Verde`, `Amarelo`, `Vermelho`).
         - `Veiculo`: Define os tipos de veículos no sistema (`Carro`, `Onibus`, `Pedestre`).
 
-[COLOQUE A IMAGEM "WhatsApp Image 2025-09-29 at 11.12.26.jpeg" AQUI]
+![variables](image/configs_discretos.jpeg")
 
 ---
 
