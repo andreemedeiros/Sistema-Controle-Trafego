@@ -5,7 +5,7 @@ Modelagem de um Sistema de Controle de Tráfego Urbano Usando Redes de Petri Col
 - [Descrição](#Descrição)
 - [Estrutura](#Estrutura)
 - [Declarações Globais (Declarations)](#Declarações-Globais-(Declarations))
-- [Subpágina: Filas](#Subpágina:-Filas)
+- [Subpágina Filas](#Subpágina-Filas)
 - [Subpágina:](#Subpágina:-`Semaforos`)
 - [Página Principal:](#Página-Principal:-`Cruzamento`)
 - [Cenários](#Cenários)
@@ -51,7 +51,7 @@ Antes de detalhar as páginas, é importante definir os tipos de dados (colorset
 
 ---
 
-## Subpágina: Filas
+## Subpágina Filas
 
 A subpágina **`Filas`** é responsável por simular a chegada de entidades ao cruzamento. Transições temporizadas geram tokens (representando carros, ônibus e pedestres) e os inserem em lugares que funcionam como filas para cada direção: Norte-Sul (NS) e Leste-Oeste (LO).
 
@@ -66,7 +66,7 @@ A subpágina **`Filas`** é responsável por simular a chegada de entidades ao c
 
 ---
 
-## Subpágina: `Semaforos`
+## Subpágina Semaforos
 
 Esta subpágina contém toda a lógica para o controle e a alternância dos sinais de trânsito. Ela garante que os semáforos para veículos e pedestres operem de forma sincronizada, passando pelos estados `Verde` -> `Amarelo` -> `Vermelho` e evitando condições de conflito (ex: dois sinais verdes para fluxos concorrentes).
 
@@ -74,7 +74,7 @@ Esta subpágina contém toda a lógica para o controle e a alternância dos sina
 
 ---
 
-## Página Principal: `Cruzamento`
+## Página Principal Cruzamento
 
 A página **`Cruzamento`** é o núcleo do modelo, onde a lógica das subpáginas `Filas` e `Semaforos` é integrada. Sua principal função é decidir qual entidade pode atravessar o cruzamento a cada momento.
 
