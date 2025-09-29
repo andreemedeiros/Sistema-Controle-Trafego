@@ -73,7 +73,7 @@ A subpágina **`Filas`** é responsável por simular a chegada de entidades ao c
 Esta subpágina contém toda a lógica para o controle e a alternância dos sinais de trânsito. Ela garante que os semáforos para veículos e pedestres operem de forma sincronizada, passando pelos estados `Verde` -> `Amarelo` -> `Vermelho` e evitando condições de conflito (ex: dois sinais verdes para fluxos concorrentes).
 
 **Visão Detalhada Semaforos:**
-![semaforo](image/semaforo.jpeg)
+![semaforo](image/semaforo.jpeg)<br>
 
 <br>
 
