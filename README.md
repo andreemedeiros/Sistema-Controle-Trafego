@@ -47,7 +47,7 @@ Antes de detalhar as páginas, é importante definir os tipos de dados (colorset
         - `EstadoSemaforo`: Define os possíveis estados de um semáforo (`Verde`, `Amarelo`, `Vermelho`).
         - `Veiculo`: Define os tipos de veículos no sistema (`Carro`, `Onibus`, `Pedestre`).
 
-![variables](image/configs_discretos.jpeg")
+![variables](image/configs_discretos.jpeg)
 
 ---
 
