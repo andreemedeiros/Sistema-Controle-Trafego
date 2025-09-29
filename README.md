@@ -5,7 +5,7 @@ Modelagem de um Sistema de Controle de Tráfego Urbano Usando Redes de Petri Col
 - [Descrição](#Descrição)
 - [Estrutura](#Estrutura)
 - [Declarações Globais (Declarations)](#Declarações-Globais-(Declarations))
-- [Subpágina:-`Filas`](#Subpágina:-`Filas`)
+- [Subpágina: Filas`](#Subpágina:-Filas)
 - [Subpágina:](#Subpágina:-`Semaforos`)
 - [Página Principal:](#Página-Principal:-`Cruzamento`)
 - [Cenários](#Cenários)
@@ -51,7 +51,7 @@ Antes de detalhar as páginas, é importante definir os tipos de dados (colorset
 
 ---
 
-## Subpágina: `Filas`
+## Subpágina: Filas
 
 A subpágina **`Filas`** é responsável por simular a chegada de entidades ao cruzamento. Transições temporizadas geram tokens (representando carros, ônibus e pedestres) e os inserem em lugares que funcionam como filas para cada direção: Norte-Sul (NS) e Leste-Oeste (LO).
 
