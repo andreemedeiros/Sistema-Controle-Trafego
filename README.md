@@ -61,6 +61,8 @@ A subpágina **`Filas`** é responsável por simular a chegada de entidades ao c
 **Visão Detalhada da Geração nas Filas:**
 ![filas](image/filas.jpeg)
 
+<br>
+
 **Visão Geral do Gerenciamento das Filas:**
 ![fluxo_filas](image/fluxo_filas.jpeg)
 
@@ -72,6 +74,8 @@ Esta subpágina contém toda a lógica para o controle e a alternância dos sina
 
 **Visão Detalhada Semaforos:**
 ![semaforo](image/semaforo.jpeg)
+
+<br>
 
 **Visão Geral dos Semaforos:**
 ![fluxo_semaforo](image/fluxo_semaforo.jpeg)
